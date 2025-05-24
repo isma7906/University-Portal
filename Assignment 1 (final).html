@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Development</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            display: flex;    
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(270deg, #00264d, #004080);
+            color: white;
+            padding: 15px 40px;
+            box-shadow: 0px 4px 100px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid #00264d; 
+        }
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+        .nav-icons input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            width: 150px;
+            box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            text-align: center;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 100;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            position: relative;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #004080;
+            font-weight: bold;
+            padding: 10px;
+            display: inline-block;
+        }
+        /*Menu Click*/
+        section {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 90%;
+            left: 0;
+            background: white;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            z-index: 101;
+            padding: 10px;
+        }
+        nav ul li:hover .dropdown-menu {
+            display: block;
+        }
+        /* Home Page */
+        .container {
+            display: flex; 
+            align-items: center;
+            justify-content: center; 
+            text-align: left; 
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        .container img {
+            width: 300px; 
+            height: auto; 
+            margin-right:50px; 
+            border-radius: 10px; 
+        }
+        /* About */
+        .about-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .about-container h1 {
+            background-color: #004080;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Georgia', serif;
+        }
+        /* Programme*/
+        .programme-wrapper {
+            width: 85%;
+            margin: 60px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .programme-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .programme-header h2 {
+            font-size: 32px;
+            color: #004080;
+            margin-bottom: 10px;
+            font-family: 'Georgia', serif;
+        }
+
+        .programme-header p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .programme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .programme-item {
+            background: #f4f6f8;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .programme-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+
+        .programme-item h3 {
+            color: #004080;
+            margin-bottom: 10px;
+        }
+
+        .programme-item p {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .programme-item ul {
+            padding-left: 18px;
+        }
+
+        .programme-item li {
+             margin-bottom: 8px;
+            color: #555;
+        }
+        /*Admission & Finance*/
+        .admission-container,
+        .finance-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+            color: #333;
+        }
+        .admission-container h1,
+        .finance-container h1 {
+            background-color: #004080;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-family: 'Georgia', serif;
+            margin-bottom: 20px;
+        }
+        .admission-container ul,
+        .finance-container ul {
+            padding-left: 20px;
+        }
+        .admission-container li,
+        .finance-container li {
+            margin-bottom: 10px;
+        }
+        /*News*/
+        .news-section {
+            display: flex;
+            width: 80%;
+            margin: 30px auto;
+            gap: 20px;
+        }
+        .news-slider {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            height: 500px; /* Adjust as needed */
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .news-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image fits well */
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            border-radius: 10px;
+        }
+        .news-slider img:nth-child(1) {
+            animation: slide 15s infinite;
+        }       
+        .news-slider img:nth-child(2) {
+            animation: slide 15s infinite 9s;
+        }
+        .news-slider img:nth-child(3) {
+            animation: slide 15s infinite 18s;
+        }
+        @keyframes slide {
+            0% { opacity: 0; transform: scale(1.05); }
+            20% { opacity: 1; transform: scale(1); }
+            40% { opacity: 1; transform: scale(1); }
+            60% { opacity: 0; transform: scale(1.05); }
+            100% { opacity: 0; transform: scale(1.05); }
+        }
+        .news-boxes {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .news-box {
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        .news-box a {
+            text-decoration: none;
+            color: #004080;
+            font-weight: bold;
+        }
+        .news-content {
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        /*Contact*/
+        .contact-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+            padding: 10px;
+        }
+        .contact-box {
+            background: #fff;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 15px auto;
+            text-align: center;
+        }  
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .social-icons img {
+            width: 25px;
+            height: 25px;
+        }
+        /*Detail Information*/
+        .course-section {
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+        }
+        .course-section h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        .course-section hr {
+            width: 60px;
+            border: 2px solid #000;
+            margin: 10px auto 40px;
+        }
+        .course-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .course-card {
+            background-color: #adc9e7;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        .course-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+        .course-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #17264c;
+        }
+        .course-card p {
+            font-size: 14px;
+            color: #29337c;
+            margin-bottom: 10px;
+        }
+        .course-card .btn {
+            background-color: #00264d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }   
+        .course-card .btn:hover {
+            background-color: #00264d;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+        }
+        .modal-content {
+            background-color: #f4f4f4;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 700px;
+            position: relative;
+            animation: modalopen 0.5s;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #29337c;
+        }
+
+        .modal-header {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            font-size: 24px;
+            color: #17264c;
+            margin: 0;
+        }
+
+        .modal-body {
+            padding: 10px 0;
+        }
+
+        .modal-body p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .program-section {
+            margin-bottom: 25px;
+        }
+
+        .program-section h4 {
+            color: #222755;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .program-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .detail-item {
+            flex: 1;
+            min-width: 200px;
+            background: #adc9e7;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .detail-item h4 {
+            margin-top: 0;
+            color: #222755;
+        }
+
+        .fee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .fee-table th, .fee-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .fee-table th {
+            background-color: #5170b4;
+            color: white;
+        }
+
+        .fee-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .pathway-list {
+            columns: 2;
+            column-gap: 30px;
+        }
+
+        .pathway-list li {
+            margin-bottom: 8px;
+            break-inside: avoid;
+        }
+
+        .career-path {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .career-card {
+            background: #adc9e7;
+            padding: 15px;
+            border-radius: 5px;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .career-card h5 {
+            margin-top: 0;
+            color: #222755;
+        } 
+
+        .requirements-list {
+            margin-left: 20px;
+        }
+
+        .requirements-list ul {
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .course-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+      
+        .modal-content {
+            width: 90%;
+            margin: 10% auto;
+        }
+      
+        .pathway-list {
+            columns: 1;
+        }
+        }
+
+        @media (max-width: 480px) {
+            .course-container {
+             grid-template-columns: 1fr;
+        }
+      
+        .modal-content {
+            width: 95%;
+            padding: 20px;
+        }
+      
+        .program-details, .career-path {
+            flex-direction: column;
+        }
+      
+        .detail-item, .career-card {
+            min-width: 100%;
+        }
+        }
+        footer {
+            background: linear-gradient(180deg, #00264d, #004080); 
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 16px;
+            box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1); 
+            border-top: 4px solid #00264d;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logo-Unikl.png">
+        </div>
+        <div class="nav-icons">
+            <form>
+                <select onchange="location.href=this.value;">
+                    <option value="#">Search...</option>
+                    <option value="#about">About</option>
+                    <option value="#programmes">Programmes</option>
+                    <option value="#admission">Admission</option>
+                    <option value="#finance">Finance</option>
+                    <option value="#news">News</option>
+                    <option value="#contact">Contact</option>
+                </select>
+            </form>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li>
+                <a href="#programme">Programme ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Study Pathway</a></li>
+                    <li><a href="#">Program Structure</a></li>
+                    <li><a href="#">Professional Certification</a></li>
+                    <li><a href="#">Career Paths</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#admission">Admission ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Entry Requirement</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#finance">Finance ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Fee Structure</a></li>
+                    <li><a href="#">Scholarships</a></li>
+                    <li><a href="#">Loans</a></li>
+                    <li><a href="#">Financial Assistance</a></li>
+                </ul>
+            </li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <img src="Main_Image.jpg">
+        <div>
+            <h2> Welcome to Student Development </h2>
+            <p>Find the latest updates, resources, and support for your university journey.</p>
+        </div>
+    </div>
+
+    <footer id="about"> About </footer>
+    <div class="about-container">
+        <h1>Overview and Program Objective</h1>
+        <p>The Student Development Section focuses on supporting students in both academic and personal growth. This website guides students in leadership development, career readiness, and academic resource accessibility. The program empowers students through mentorship, workshops, and digital resources to enhance their educational journey.</p>
+      </div>
+    
+      <div class="about-container">
+        <h1>Faculty Profile</h1>
+        <p>The Student Development Section is managed by a team of dedicated faculty members specializing in career counseling, leadership training, and student welfare. Our team includes academic advisors, counselors, management staff, and student representatives who work collaboratively to support individual student needs.</p>
+      </div>
+
+    <footer id="programme"> Programme </footer>
+    <section class="programme-wrapper">
+        <div class="programme-header">
+          <h2>Programme Highlights</h2>
+          <p>Discover the core elements of our academic offerings designed to guide your success—from pathways to professional growth.</p>
+        </div>
+      
+        <div class="programme-grid">
+          <!-- Study Pathway -->
+          <div class="programme-item">
+            <h3>Study Pathway</h3>
+            <ul>
+              <li>Overview of different study options (full-time, part-time, online learning).</li>
+              <li>Entry requirements and prerequisites.</li>
+              <li>Duration of the program and expected learning outcomes.</li>
+            </ul>
+          </div>
+      
+          <!-- Program Structure -->
+          <div class="programme-item">
+            <h3>Program Structure</h3>
+            <ul>
+              <li>Breakdown of core subjects and elective courses.</li>
+              <li>Semester-wise or year-wise course distribution.</li>
+              <li>Internships, research projects, or hands-on training.</li>
+            </ul>
+          </div>
+      
+          <!-- Professional Certification -->
+          <div class="programme-item">
+            <h3>Professional Certification</h3>
+            <ul>
+              <li>Industry-recognized certifications.</li>
+              <li>Additional certifications to enhance career growth.</li>
+              <li>Benefits of certification in career progression.</li>
+            </ul>
+          </div>
+      
+          <!-- Career Paths -->
+          <div class="programme-item">
+            <h3>Career Paths</h3>
+            <ul>
+              <li>Job roles available after program completion.</li>
+              <li>Expected salary range and industry demand.</li>
+              <li>Higher education opportunities (master’s, PhD programs).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    
+    <footer id="admission"> Admission </footer>
+    <section class="finance-container">
+        <p>Ready to start your journey? Here's what you need to know about joining our programs.</p>
+        <ul>
+            <li><strong>Entry Requirements:</strong> See program-specific details in each modal.</li>
+            <li><strong>Application Process:</strong> Online application → Submit documents → Interview (if required) → Offer Letter.</li>
+            <li><strong>Deadlines:</strong> March 31 (Early), June 30 (Regular), August 15 (Late)</li>
+            <li><strong>Documents Needed:</strong> Identity card/passport, academic transcripts, language test results, portfolio (if required).</li>
+        </ul>
+    </section>
+
+    <footer id="finance"> Finance </footer>
+    <section class="finance-container">
+        <p>We offer affordable education and support to help you succeed without the stress.</p>
+        <ul>
+            <li><strong>Tuition Fees:</strong> Refer to each program for exact amounts (local vs. international).</li>
+            <li><strong>Scholarships:</strong> Merit-based, talent-based, and needs-based options available.</li>
+            <li><strong>Loans:</strong> PTPTN, MARA, and private loan options.</li>
+            <li><strong>Payment Plans:</strong> Installment plans available upon request.</li>
+        </ul>
+    </section>
+
+    <footer> Programmed Details </footer>
+    <div class="course-container">
+        <!-- Information Technology -->
+        <div class="course-card">
+          <img src="https://i.pinimg.com/736x/51/d5/48/51d548911242e61017adcdfbed429f59.jpg" alt="Information Technology" />
+          <h3>Information Technology</h3>
+          <p>Transform Your Passion for Tech into Cutting-Edge Skills!</p>
+          <button class="btn read-more" data-program="it">Read More</button>
+        </div>
+  
+        <!-- Business Administration -->
+        <div class="course-card">
+          <img src="https://i.pinimg.com/736x/81/7a/d1/817ad1b23ccd08bd68d6b61a39a1310b.jpg" alt="Business Administration" />
+          <h3>Business Administration</h3>
+          <p>Lead, Innovate, Dominate – Master the Art of Business Success!</p>
+          <button class="btn read-more" data-program="business">Read More</button>
+        </div>
+  
+        <!-- Engineering -->
+        <div class="course-card">
+          <img src="https://i.pinimg.com/736x/3e/e5/bd/3ee5bdf7ae9ad0bcb7d5798f4bad23b3.jpg" alt="Engineering" />
+          <h3>Engineering</h3>
+          <p>Where Creativity Meets Calculation – Shape the Future with Innovation!</p>
+          <button class="btn read-more" data-program="engineering">Read More</button>
+        </div>
+  
+        <!-- Art & Design -->
+        <div class="course-card">
+          <img src="https://i.pinimg.com/736x/4f/be/bb/4fbebb83cb5a1f10397c9119aaa9b08c.jpg" alt="Art Design" />
+          <h3>Art & Design</h3>
+          <p>Turn Imagination into Masterpieces – Create, Inspire, Revolutionize!</p>
+          <button class="btn read-more" data-program="art">Read More</button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Modal Structure -->
+    <div id="programModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="modal-header">
+          <h3 id="modalTitle">Program Title</h3>
+        </div>
+        <div class="modal-body">
+          <div class="program-section">
+            <p id="modalDescription">Program description will appear here.</p>
+          </div>
+          
+          <div class="program-section">
+            <h4>Program Details</h4>
+            <div class="program-details">
+              <div class="detail-item">
+                <h4>Duration</h4>
+                <p id="duration">3-4 years</p>
+              </div>
+              <div class="detail-item">
+                <h4>Degree Awarded</h4>
+                <p id="degree">Bachelor's Degree</p>
+              </div>
+              <div class="detail-item">
+                <h4>Entry Requirements</h4>
+                <div id="entryRequirements" class="requirements-list">
+                  <!-- Entry requirements will be inserted here -->
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="program-section">
+            <h4>Fee Structure</h4>
+            <div id="feeStructure">
+              <!-- Fee table will be inserted here -->
+            </div>
+          </div>
+          
+          <div class="program-section">
+            <h4>Sponsorship & Financial Assistance</h4>
+            <div id="financialAssistance">
+              <!-- Financial assistance info will be inserted here -->
+            </div>
+          </div>
+          
+          <div class="program-section">
+            <h4>Study Pathway</h4>
+            <div id="studyPathway">
+              <!-- Study pathway will be inserted here -->
+            </div>
+          </div>
+          
+          <div class="program-section">
+            <h4>Program Structure</h4>
+            <div id="programStructure">
+              <!-- Program structure will be inserted here -->
+            </div>
+          </div>
+          
+          <div class="program-section">
+            <h4>Professional Certification</h4>
+            <div id="professionalCert">
+              <!-- Professional certs will be inserted here -->
+            </div>
+          </div>
+          
+          <div class="program-section">
+            <h4>Career Paths</h4>
+            <div id="careerPaths" class="career-path">
+              <!-- Career paths will be inserted here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <script>
+      // Program data
+      const programs = {
+        it: {
+          title: "Information Technology",
+          description: "Our IT program provides comprehensive training in software development, network administration, cybersecurity, and data management. Students gain hands-on experience with the latest technologies and industry-standard tools.",
+          duration: "4 years (8 semesters)",
+          degree: "Bachelor of Science in Information Technology",
+          entryRequirements: {
+            academic: {
+              malaysian: [
+                "SPM: Minimum Bahasa Melayu C+, Sejarah C+, Matematik C+",
+                "STPM: Minimum CGPA of 2.00 or higher",
+                "Matriculation/Foundation: Minimum CGPA 2.00",
+                "Diploma: Minimum CGPA as required by program"
+              ],
+              international: [
+                "Equivalent qualifications: A-levels, IB, or high school diplomas"
+              ]
+            },
+            english: [
+              "MUET (Malaysian University English Test): Band 3 or higher",
+              "IELTS: 5.5 or equivalent"
+            ]
+          },
+          feeStructure: {
+            title: "Annual Fee Structure",
+            rows: [
+              ["Local Students", "RM 12,500 per year"],
+              ["International Students", "RM 24,800 per year"],
+              ["Miscellaneous Fees", "RM 1,200 (one-time)"]
+            ]
+          },
+          financialAssistance: [
+            "Merit-based scholarships available (up to 100% tuition waiver)",
+            "PTPTN loans for Malaysian students",
+            "MARA Educational Loans",
+            "Industry-sponsored scholarships"
+          ],
+          studyPathway: [
+            "Year 1: Foundation in Computing",
+            "Year 2: Core IT Fundamentals",
+            "Year 3: Specialization Electives",
+            "Year 4: Advanced Topics & Capstone Project"
+          ],
+          programStructure: [
+            "Core Courses (60%)",
+            "Specialization Tracks (30%)",
+            "Electives (10%)",
+            "Industrial Training (6 months)"
+          ],
+          professionalCert: [
+            "Microsoft Certified: Azure Fundamentals",
+            "Cisco CCNA Certification",
+            "AWS Certified Cloud Practitioner",
+            "CompTIA Security+"
+          ],
+          careerPaths: [
+            {
+              title: "Software Developer",
+              salary: "RM 4,000 - RM 12,000"
+            },
+            {
+              title: "Cybersecurity Analyst",
+              salary: "RM 4,500 - RM 15,000"
+            },
+            {
+              title: "Data Scientist",
+              salary: "RM 5,000 - RM 18,000"
+            },
+            {
+              title: "IT Consultant",
+              salary: "RM 4,200 - RM 14,000"
+            }
+          ]
+        },
+        business: {
+          title: "Business Administration",
+          description: "This program equips students with essential business skills in management, marketing, finance, and entrepreneurship. Our experiential learning approach combines theory with real-world business challenges.",
+          duration: "3-4 years (6-8 semesters)",
+          degree: "Bachelor of Business Administration",
+          entryRequirements: {
+            academic: {
+              malaysian: [
+                "SPM: Minimum Bahasa Melayu C+, Sejarah C+, Matematik C+",
+                "STPM: Minimum CGPA of 2.00 or higher",
+                "Matriculation/Foundation: Minimum CGPA 2.00",
+                "Diploma: Minimum CGPA as required by program"
+              ],
+              international: [
+                "Equivalent qualifications: A-levels, IB, or high school diplomas"
+              ]
+            },
+            english: [
+              "MUET (Malaysian University English Test): Band 3 or higher",
+              "IELTS: 5.5 or equivalent"
+            ]
+          },
+          feeStructure: {
+            title: "Annual Fee Structure",
+            rows: [
+              ["Local Students", "RM 11,800 per year"],
+              ["International Students", "RM 22,500 per year"],
+              ["Miscellaneous Fees", "RM 1,000 (one-time)"]
+            ]
+          },
+          financialAssistance: [
+            "Dean's List Scholarship (30% tuition waiver)",
+            "MARA Educational Loans",
+            "PTPTN loans for Malaysian students",
+            "Corporate sponsorship opportunities"
+          ],
+          studyPathway: [
+            "Year 1: Business Fundamentals",
+            "Year 2: Functional Areas of Business",
+            "Year 3: Concentration Courses",
+            "Year 4: Strategic Management & Internship"
+          ],
+          programStructure: [
+            "Core Business Courses (50%)",
+            "Concentration Courses (30%)",
+            "General Education (10%)",
+            "Practical Training (10%)"
+          ],
+          professionalCert: [
+            "Chartered Institute of Marketing (CIM)",
+            "Certified Management Accountant (CMA)",
+            "Project Management Professional (PMP)",
+            "Entrepreneurship Certification"
+          ],
+          careerPaths: [
+            {
+              title: "Business Analyst",
+              salary: "RM 3,800 - RM 10,000"
+            },
+            {
+              title: "Marketing Manager",
+              salary: "RM 4,200 - RM 12,000"
+            },
+            {
+              title: "Financial Advisor",
+              salary: "RM 3,500 - RM 15,000"
+            },
+            {
+              title: "HR Specialist",
+              salary: "RM 3,200 - RM 8,000"
+            }
+          ]
+        },
+        engineering: {
+          title: "Engineering",
+          description: "Our engineering program offers specializations in Mechanical, Electrical, and Civil Engineering. The curriculum emphasizes problem-solving, innovation, and sustainable design principles.",
+          duration: "4 years (8 semesters)",
+          degree: "Bachelor of Engineering",
+          entryRequirements: {
+            academic: {
+              malaysian: [
+                "SPM: Minimum Bahasa Melayu C+, Sejarah C+, Mathematics C+, Science C+",
+                "STPM: Minimum CGPA of 2.33 or higher (Science stream)",
+                "Matriculation/Foundation: Minimum CGPA 2.50 (Science stream)",
+                "Diploma: Minimum CGPA as required by program"
+              ],
+              international: [
+                "Equivalent qualifications: A-levels with Mathematics and Physics"
+              ]
+            },
+            english: [
+              "MUET (Malaysian University English Test): Band 3 or higher",
+              "IELTS: 5.5 or equivalent"
+            ]
+          },
+          feeStructure: {
+            title: "Annual Fee Structure",
+            rows: [
+              ["Local Students", "RM 14,200 per year"],
+              ["International Students", "RM 28,500 per year"],
+              ["Lab Fees", "RM 1,500 per year"]
+            ]
+          },
+          financialAssistance: [
+            "Engineering Excellence Scholarship (50-100% tuition)",
+            "MARA Educational Loans",
+            "PTPTN loans for Malaysian students",
+            "Industry sponsorship programs"
+          ],
+          studyPathway: [
+            "Year 1: Engineering Fundamentals",
+            "Year 2: Core Engineering Principles",
+            "Year 3: Specialization Courses",
+            "Year 4: Design Project & Professional Preparation"
+          ],
+          programStructure: [
+            "Engineering Core (60%)",
+            "Specialization Courses (25%)",
+            "Mathematics/Science (10%)",
+            "Design Projects (5%)"
+          ],
+          professionalCert: [
+            "Engineer-in-Training (EIT) Certification",
+            "AutoCAD Professional Certification",
+            "SolidWorks Certification",
+            "LEED Green Associate"
+          ],
+          careerPaths: [
+            {
+              title: "Mechanical Engineer",
+              salary: "RM 4,000 - RM 12,000"
+            },
+            {
+              title: "Electrical Engineer",
+              salary: "RM 4,200 - RM 13,000"
+            },
+            {
+              title: "Civil Engineer",
+              salary: "RM 3,800 - RM 11,000"
+            },
+            {
+              title: "Project Manager",
+              salary: "RM 5,000 - RM 18,000"
+            }
+          ]
+        },
+        art: {
+          title: "Art & Design",
+          description: "This creative program nurtures artistic talent while developing practical design skills. Students explore various media and digital tools while developing their unique artistic voice.",
+          duration: "3 years (6 semesters)",
+          degree: "Bachelor of Fine Arts",
+          entryRequirements: {
+            academic: {
+              malaysian: [
+                "SPM: Minimum Bahasa Melayu C+, Sejarah C+",
+                "STPM: Minimum CGPA of 2.00 or higher",
+                "Matriculation/Foundation: Minimum CGPA 2.00",
+                "Diploma: Minimum CGPA as required by program",
+                "Portfolio review required"
+              ],
+              international: [
+                "Equivalent qualifications: A-levels, IB, or high school diplomas",
+                "Portfolio review required"
+              ]
+            },
+            english: [
+              "MUET (Malaysian University English Test): Band 3 or higher",
+              "IELTS: 5.5 or equivalent"
+            ]
+          },
+          feeStructure: {
+            title: "Annual Fee Structure",
+            rows: [
+              ["Local Students", "RM 10,500 per year"],
+              ["International Students", "RM 19,800 per year"],
+              ["Material Fees", "RM 800 per semester"]
+            ]
+          },
+          financialAssistance: [
+            "Talent-based scholarships (portfolio review)",
+            "Creative Arts Bursary",
+            "PTPTN loans for Malaysian students",
+            "MARA Educational Loans"
+          ],
+          studyPathway: [
+            "Year 1: Foundation in Art & Design",
+            "Year 2: Intermediate Studio Practice",
+            "Year 3: Advanced Studio & Professional Practice"
+          ],
+          programStructure: [
+            "Studio Practice (60%)",
+            "Art History/Theory (20%)",
+            "Professional Practice (15%)",
+            "Electives (5%)"
+          ],
+          professionalCert: [
+            "Adobe Certified Professional",
+            "Autodesk Certified User",
+            "Teaching Artist Certificate",
+            "Gallery Management Certification"
+          ],
+          careerPaths: [
+            {
+              title: "Graphic Designer",
+              salary: "RM 2,800 - RM 8,000"
+            },
+            {
+              title: "Art Director",
+              salary: "RM 4,500 - RM 15,000"
+            },
+            {
+              title: "Illustrator",
+              salary: "RM 3,000 - RM 10,000"
+            },
+            {
+              title: "Art Educator",
+              salary: "RM 3,200 - RM 7,500"
+            }
+          ]
+        }
+      };
+  
+      // Modal functionality
+      const modal = document.getElementById("programModal");
+      const closeBtn = document.querySelector(".close-btn");
+      const readMoreBtns = document.querySelectorAll(".read-more");
+  
+      // Function to create fee table
+      function createFeeTable(rows) {
+        let table = '<table class="fee-table">';
+        table += '<tr><th>Category</th><th>Amount</th></tr>';
+        
+        rows.forEach(row => {
+          table += `<tr><td>${row[0]}</td><td>${row[1]}</td></tr>`;
+        });
+        
+        table += '</table>';
+        return table;
+      }
+  
+      // Function to create list items
+      function createListItems(items) {
+        return '<ul>' + items.map(item => `<li>${item}</li>`).join('') + '</ul>';
+      }
+  
+      // Function to create career cards
+      function createCareerCards(careers) {
+        return careers.map(career => `
+          <div class="career-card">
+            <h5>${career.title}</h5>
+            <p>${career.salary}</p>
+          </div>
+        `).join('');
+      }
+  
+      // Function to create entry requirements
+      function createEntryRequirements(requirements) {
+        let html = '<div class="requirements-list">';
+        
+        // Academic Qualifications
+        html += '<h5>Academic Qualifications</h5>';
+        html += '<h6>Malaysian Students:</h6>';
+        html += createListItems(requirements.academic.malaysian);
+        
+        html += '<h6>International Students:</h6>';
+        html += createListItems(requirements.academic.international);
+        
+        // English Language Proficiency
+        html += '<h5>English Language Proficiency:</h5>';
+        html += createListItems(requirements.english);
+        
+        html += '</div>';
+        return html;
+      }
+  
+      // Open modal with program details
+      readMoreBtns.forEach(btn => {
+        btn.addEventListener("click", function() {
+          const programId = this.getAttribute("data-program");
+          const program = programs[programId];
+          
+          // Set basic info
+          document.getElementById("modalTitle").textContent = program.title;
+          document.getElementById("modalDescription").textContent = program.description;
+          document.getElementById("duration").textContent = program.duration;
+          document.getElementById("degree").textContent = program.degree;
+          
+          // Set entry requirements
+          document.getElementById("entryRequirements").innerHTML = createEntryRequirements(program.entryRequirements);
+          
+          // Set fee structure
+          document.getElementById("feeStructure").innerHTML = `
+            <h5>${program.feeStructure.title}</h5>
+            ${createFeeTable(program.feeStructure.rows)}
+          `;
+          
+          // Set financial assistance
+          document.getElementById("financialAssistance").innerHTML = createListItems(program.financialAssistance);
+          
+          // Set study pathway
+          document.getElementById("studyPathway").innerHTML = `
+            <ul class="pathway-list">${program.studyPathway.map(item => `<li>${item}</li>`).join('')}</ul>
+          `;
+          
+          // Set program structure
+          document.getElementById("programStructure").innerHTML = createListItems(program.programStructure);
+          
+          // Set professional certifications
+          document.getElementById("professionalCert").innerHTML = createListItems(program.professionalCert);
+          
+          // Set career paths
+          document.getElementById("careerPaths").innerHTML = createCareerCards(program.careerPaths);
+          
+          // Show modal
+          modal.style.display = "block";
+          document.body.style.overflow = "hidden";
+        });
+      });
+  
+      // Close modal
+      closeBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      });
+  
+      // Close when clicking outside modal
+      window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      });
+  
+      // Close with Escape key
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape" && modal.style.display === "block") {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      });
+    </script>
+
+    <footer id="news"> News </footer>
+    <div class="news-section">
+        <div class="news-slider">
+            <img src="Protest.avif">
+            <img src="Mystery.jpg">
+            <img src="Elite.jpg">
+        </div>
+        <div class="news-boxes">
+            <div class="news-box"><a href="#news1">CAMPUS IN CHAOS: STUDENTS STAGE PROTEST OVER UNFAIR RULE—ADMIN STAYS SILENT!</a></div>
+            <div class="news-box"><a href="#news2">WHERE DID HE GO? POPULAR STUDENT LEADER DISAPPEARS BEFORE MAJOR EVENT!</a></div>
+            <div class="news-box"><a href="#news3">EXPOSED: THE SECRET “ELITE CLUB” CONTROLLING CAMPUS OPPORTUNITIES!</a></div>
+        </div>
+    </div>
+    
+    <!-- Full News Content -->
+    <div id="news1" class="news-content">
+        <h2>CAMPUS IN CHAOS: STUDENTS STAGE PROTEST OVER UNFAIR RULE—ADMIN STAYS SILENT!</h2>
+        <p> &nbsp;&nbsp;&nbsp;&nbsp;Students are furious after a sudden rule change that no one saw coming. Overnight, a new policy was enforced—stricter dress codes, earlier curfews, and bizarre fines for minor violations. The worst part? No one was warned.
+            <br><br>A group of students took matters into their own hands, storming the admin office with banners and demands. “They can’t just change the rules without telling us,” one student said. “We’re not going to stay quiet.”
+            <br><br>Despite the growing tension, the administration has refused to respond. What are they hiding? And will this protest turn into something even bigger?
+            <br><br>Stay tuned—this is just getting started.
+        </p>
+    </div>
+    
+    <div id="news2" class="news-content">
+        <h2>WHERE DID HE GO? POPULAR STUDENT LEADER DISAPPEARS BEFORE MAJOR EVENT!</h2>
+        <p> &nbsp;&nbsp;&nbsp;&nbsp;Something weird is going on. A well-known student—the face of multiple clubs, always in the spotlight—has vanished without a trace.
+            <br><br>He was last seen at a club meeting three days ago, looking “stressed and distracted.” Since then, his phone has been off, his social media wiped clean, and he even missed a huge event he was supposed to lead. No explanation. No goodbye.
+            <br><br>Some say he just needed a break. Others think he’s hiding from something big. But the real question is—did something happen to him?
+            <br><br>Whatever the reason, no one is talking… and that’s making people even more suspicious.</p>
+    </div>
+    
+    <div id="news3" class="news-content">
+        <h2>EXPOSED: THE SECRET “ELITE CLUB” CONTROLLING CAMPUS OPPORTUNITIES!</h2>
+        <p> &nbsp;&nbsp;&nbsp;&nbsp;Ever wonder why some students always get the best internships, exclusive event invites, and secret scholarships—while the rest of us struggle just to find out about them? Turns out, there’s a reason.
+            <br><br>Rumors are swirling about a private student society that handpicks its members. No applications. No announcements. You’re either in… or you don’t even know it exists.
+            <br><br>“They meet privately. They control information. And they make sure only their people get ahead,” one student revealed.
+            <br><br>Even crazier? Someone was allegedly kicked out for leaking details. What else are they hiding? And how deep does this really go?
+            <br><br>If you’re not in the circle, you’re already too late.
+        </p>
+    </div>
+    
+    <footer id="contact"> Contact </footer>
+    <div class="about-container">
+        <h1>Contact Information</h1>
+        <div class="contact-container">
+          <div class="contact-box">
+            <b>Office</b>
+            <p>Student Services Building, Level 3, Room 305</p>
+          </div>
+
+          <div class="contact-box">
+            <b>Hours</b>
+            <p>Mon - Fri, 9 AM - 5 PM</p>
+          </div>
+
+          <div class="contact-box">
+            <b>Phone</b>
+            <p>+6012-3456789</p>
+          </div>
+
+          <div class="contact-box">
+            <b>Email</b>
+            <p>studentdevelopment@university.edu</p>
+          </div>
+        </div>
+    
+        <div class="social-icons">
+          <img src="Facebook-Logo.webp"> 
+          <p> @StudentDevelopment</p> 
+          <img src="X-Logo.png">
+          <p> @StudentDevelopment</p>
+          <img src="Instagram-Logo.png"> 
+          <p> @StudentDevelopment</p>
+        </div>
+      </div>
+
+    <footer>
+        <p>&copy; 2025 Student Development. All rights reserved.</p>
+    </footer>
+</body>
+</html>
